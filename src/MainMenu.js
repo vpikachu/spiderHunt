@@ -17,10 +17,11 @@ MainMenu.init1 = function(){
     MainMenu.addChild(MainMenu.btnPlay);
 
     var sprite =   new PIXI.Text("Play",{
-        font : '25px HennyPenny',
+        font : '35px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',
-        strokeThickness : 4
+        strokeThickness : 4,
+        padding:20
     });
 
     sprite.anchor.set(0.5,0.5);
@@ -41,10 +42,11 @@ MainMenu.init1 = function(){
     MainMenu.addChild(MainMenu.btnRules);
 
     sprite =   new PIXI.Text("Rules",{
-        font : '25px HennyPenny',
+        font : '35px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',
-        strokeThickness : 4
+        strokeThickness : 4,
+        padding:20
     });
 
     sprite.anchor.set(0.5,0.5);
@@ -54,7 +56,8 @@ MainMenu.init1 = function(){
         font : '30px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#000000',
-        strokeThickness : 4
+        strokeThickness : 4,
+        padding:20
     });
 
     MainMenu.bestScore.anchor.set(0.5,0.5);

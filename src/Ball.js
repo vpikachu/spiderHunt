@@ -18,7 +18,7 @@ Ball.prototype.init = function (){
     this.COLLISION_GP = 1;
     this.COLLISION_PLAYER = 2;
     this.COLLISION_PATH=3;
-    this.STEP = 4;
+    this.STEP = 3;
     this.randomizeDirection();
 };
 
@@ -48,15 +48,15 @@ Ball.prototype.randomizeDirection = function() {
     this.direction = {x: Math.customRandom(1,this.STEP-1)*(Math.random()>0.5?1:-1)};
     this.direction.y = Math.round(Math.sqrt(Math.pow(this.STEP,2) - Math.pow(this.direction.x,2)));
 
-    if(this.direction.y <1) this.direction.y = 1;
+    /*if(this.direction.y <1) this.direction.y = 1;
     else if(this.direction.y == this.STEP) this.direction.y = this.STEP - 1;
-
+*/
     this.direction.y *= (Math.random()>0.5?1:-1);
 
 };
 Ball.prototype.updateGraphicsPos = function () {
-    this.graphics.x = /*Math.round(*/this.position.x/*)*/;
-    this.graphics.y = /*Math.round(*/this.position.y/*)*/;
+    this.graphics.x = Math.round(this.position.x);
+    this.graphics.y = Math.round(this.position.y);
 };
 Ball.prototype.doMove = function() {
     var collision = this.processCollisions();

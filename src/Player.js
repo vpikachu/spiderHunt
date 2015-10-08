@@ -44,14 +44,14 @@ var Player = {
         create particle of spyder rush
          */
 
-        var pc = new PIXI.Container();/*new PIXI.ParticleContainer(2000, {
+        var pc = /*new PIXI.Container();*/new PIXI.ParticleContainer(2000, {
             scale: true,
             position: true,
             rotation: true,
             uvs: true,
             alpha: true
 
-        });*/
+        });
 
         this.graphics.emitter = new cloudkid.Emitter(
 
@@ -64,17 +64,17 @@ var Player = {
             [Game.resources.particle.texture],
             {
                     "alpha": {
-                    "start": 0.3,
+                    "start": 0.5,
                         "end": 0
                 },
                     "scale": {
                     "start": 0.2,
-                        "end": 0.2,
+                        "end": 0.1,
                         "minimumScaleMultiplier": 1
                 },
                     "color": {
-                    "start": "#000000",
-                        "end": "#999999"
+                    "start": "#25becc"/*"#000000"*/,
+                        "end": "#25becc"/*"#999999"*/
                 },
                     "speed": {
                     "start": 80,
@@ -93,8 +93,8 @@ var Player = {
                         "max": 0
                 },
                     "lifetime": {
-                    "min": 0.2,
-                        "max": 0.2
+                    "min": 0.15,
+                        "max": 0.15
                 },
                     "blendMode": "normal",
                     "frequency": 0.001,
@@ -133,8 +133,6 @@ var Player = {
         this.graphics.movieClip.animationSpeed = 0.5;
         this.graphics.addChild(this.graphics.movieClip);
         PlayGround.addChild(this.graphics);
-
-
     },
     applyStartProperties: function() {
         this.direction = {x:0,y:0};
@@ -379,7 +377,7 @@ var Player = {
                     (rect2.point2.x>rect1.point1.x && rect2.point2.x<rect1.point2.x))
                 &&
                 ((rect1.point1.y>rect2.point1.y && rect1.point1.y<rect2.point2.y) ||
-                    (rect1.point2.x>rect2.point1.y && rect1.point2.y<rect2.point2.y) ||
+                    (rect1.point2.y>rect2.point1.y && rect1.point2.y<rect2.point2.y) ||
 
                     (rect2.point1.y>rect1.point1.y && rect2.point1.y<rect1.point2.y) ||
                     (rect2.point2.y>rect1.point1.y && rect2.point2.y<rect1.point2.y))
