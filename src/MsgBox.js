@@ -17,7 +17,8 @@ MsgBox.init1 = function() {
         font : '25px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',
-        strokeThickness : 4
+        strokeThickness : 4,
+        padding:20,align:"center"
     });
 
     MsgBox.text.anchor.set(0.5,0.5);
