@@ -80,4 +80,11 @@ MainMenu.onStart = function(){
 };
 MainMenu.onRules = function(){
 
+    InputTracking.setup();
+    Game.lives = 100;
+    Game.score = 0;
+
+
+    Game.stage = PlayGround;
+    PlayGround.createLevel(PlayGround.rules[0]);
 };

@@ -1,6 +1,9 @@
 /**
  * Created by pikachu on 01.09.2015.
  */
+Math.isNumeric = Math.isNumeric ||  function (n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+};
 Math.sign = Math.sign || function(x) {
         x = +x; // ??????????? ? ?????
         if (x === 0 || isNaN(x)) {

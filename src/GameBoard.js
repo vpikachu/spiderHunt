@@ -30,5 +30,9 @@ GameBoard.init1 = function(){
 };
 
 GameBoard.updateState = function(){
-  GameBoard.state.text = "x "+Game.lives+"  level: "+Game.level+ "   score: "+ Game.score;
+  GameBoard.state.text = "x "+Game.lives;
+    if(Math.isNumeric(Game.level)) GameBoard.state.text += "  level: "+Game.level;
+    else
+        GameBoard.state.text += "  level: "+Game.level.name;
+    GameBoard.state.text += "   score: "+ Game.score;
 };
