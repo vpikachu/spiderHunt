@@ -370,17 +370,17 @@ var Player = {
             }
             //define if has overlaing
             if(
-                ((rect1.point1.x>rect2.point1.x && rect1.point1.x<rect2.point2.x) ||
-                (rect1.point2.x>rect2.point1.x && rect1.point2.x<rect2.point2.x) ||
+                ((rect1.point1.x>=rect2.point1.x && rect1.point1.x<=rect2.point2.x) ||
+                (rect1.point2.x>=rect2.point1.x && rect1.point2.x<=rect2.point2.x) ||
 
-                    (rect2.point1.x>rect1.point1.x && rect2.point1.x<rect1.point2.x) ||
-                    (rect2.point2.x>rect1.point1.x && rect2.point2.x<rect1.point2.x))
+                    (rect2.point1.x>=rect1.point1.x && rect2.point1.x<=rect1.point2.x) ||
+                    (rect2.point2.x>=rect1.point1.x && rect2.point2.x<=rect1.point2.x))
                 &&
-                ((rect1.point1.y>rect2.point1.y && rect1.point1.y<rect2.point2.y) ||
-                    (rect1.point2.y>rect2.point1.y && rect1.point2.y<rect2.point2.y) ||
+                ((rect1.point1.y>=rect2.point1.y && rect1.point1.y<=rect2.point2.y) ||
+                    (rect1.point2.y>=rect2.point1.y && rect1.point2.y<=rect2.point2.y) ||
 
-                    (rect2.point1.y>rect1.point1.y && rect2.point1.y<rect1.point2.y) ||
-                    (rect2.point2.y>rect1.point1.y && rect2.point2.y<rect1.point2.y))
+                    (rect2.point1.y>=rect1.point1.y && rect2.point1.y<=rect1.point2.y) ||
+                    (rect2.point2.y>=rect1.point1.y && rect2.point2.y<=rect1.point2.y))
             )
             {
                 //!!!GOt Bonuses!!!
