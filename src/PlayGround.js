@@ -5,6 +5,7 @@ var PlayGround = new PIXI.Container();
 PlayGround.balls = [];
 PlayGround.bonuses = [];
 PlayGround.trash = [];
+PlayGround.isMessageShowing = false;
 
 
 PlayGround.init1 = function(){
@@ -33,7 +34,7 @@ PlayGround.init1 = function(){
 };
 
 PlayGround.doFlow = function(){
-    if(MsgBox.isShow) return;
+    if(PlayGround.isMessageShowing) return;
     Player.doMove();
     for(var i=0; i< PlayGround.balls.length; i++)
     {
@@ -114,6 +115,7 @@ PlayGround.createLevel = function(level){
 PlayGround.rules = [
     {
         name:"rule 1",
+        postMessage:"Next training!",
         init: function(){
             var Text = new PIXI.Text("use arrow keys / mouse swipes / touch swipes to move spider and surround bug by web",
                 {
@@ -151,6 +153,7 @@ PlayGround.rules = [
     },
     {
         name:"rule 2",
+        postMessage:"You have completed training.",
         init: function(){
             var Text = new PIXI.Text("Collect bonuses: \nElixir(make spider faster),\n Coin (up your score)",
                 {

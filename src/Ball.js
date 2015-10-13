@@ -70,7 +70,8 @@ Ball.prototype.doMove = function() {
         Game.lives--;
         Game.pressedKey = -1;
         if(Game.lives < 1) {
-            MsgBox.showMsg("Game Over",Game.showStartMenu);
+            var msg = new MsgBox();
+            msg.showMsg("Game Over",Game.showStartMenu);
             Game.setBestScore();
             return;
         }

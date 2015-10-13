@@ -159,7 +159,8 @@ var Player = {
         if(Game.checkIsWIN())
         {
             this.stopMovie();
-            MsgBox.showMsg("You win! Next Level!",PlayGround.nextLevel);
+            var msg = new MsgBox();
+            msg.showMsg("You win! Next Level!",PlayGround.nextLevel);
             Game.score +=100;
             return;
         }
@@ -238,7 +239,8 @@ var Player = {
                     if(Game.lives < 1) {
                         Game.setBestScore();
                         this.stopMovie();
-                        MsgBox.showMsg("GameOver",  Game.showStartMenu);
+                        var msg = new MsgBox();
+                        msg.showMsg("GameOver",  Game.showStartMenu);
                     }
                     else  {
                         GameBoard.updateState();

@@ -12,27 +12,58 @@ GameBoard.init1 = function(){
 
     GameBoard.addChild(bg);
 
+
+    var back  = new PIXI.Sprite( Game.resources.backbutton.texture);
+    back.anchor.set(0,1);
+    back.scale.set(sf,sf);
+    back.position.set(5,Game.screen.height-7);
+    back.buttonMode = true;
+    back.interactive = true;
+    back.tap = GameBoard.showMenu;
+    back.click = GameBoard.showMenu;
+    GameBoard.addChild(back);
+
     GameBoard.state = new PIXI.Text("text",{
-            font: '18px HennyPenny',
+            font: '17px HennyPenny',
             fill: '#FFFFFF'
+            /*wrap:true,
+            wrapWidth:600,
+            lineHeight:25*/
         }
     );
     GameBoard.state.anchor.set(0,1);
-    bg = new PIXI.Sprite(Game.resources.spyder1.texture);
-    bg.anchor.set(0,1);
+    var spider = new PIXI.Sprite(Game.resources.spyder1.texture);
 
-    bg.position.set(5,Game.screen.height-7);
+    spider.position.set(15+back.position.x+back.width,Game.screen.height-10);
+    spider.anchor.set(0,1);
+    //spider.scale.set(sf,sf);
 
-    GameBoard.addChild(bg);
-    GameBoard.state.position.set(bg.position.x + bg.width + 4,Game.screen.height-5);
+    GameBoard.addChild(spider);
+    GameBoard.state.position.set(spider.position.x+spider.width+3,spider.position.y);
+    GameBoard.state.scale.set(sf,sf);
     GameBoard.addChild(GameBoard.state);
     PlayGround.addChild(GameBoard);
 };
 
 GameBoard.updateState = function(){
-  GameBoard.state.text = "x "+Game.lives;
-    if(Math.isNumeric(Game.level)) GameBoard.state.text += "  level: "+Game.level;
+  GameBoard.state.text = " x "+Game.lives;
+    if(Math.isNumeric(Game.level)) GameBoard.state.text += "   level: "+Game.level;
     else
-        GameBoard.state.text += "  level: "+Game.level.name;
+        GameBoard.state.text += "   level: "+Game.level.name;
     GameBoard.state.text += "   score: "+ Game.score;
+};
+GameBoard.showMenu = function () {
+    if(PlayGround.isMessageShowing) return;
+
+    var msgResume = new MsgBox();
+    msgResume.position.y -= msgResume.height/2;
+    var msgMainMenu = new MsgBox();
+    msgMainMenu.position.y += msgMainMenu.height/2;
+    msgMainMenu.getChildAt(0).scale.x = -msgMainMenu.getChildAt(0).scale.x
+    msgMainMenu.separateBoxes.push(msgResume);
+    msgResume.separateBoxes.push(msgMainMenu);
+
+    msgMainMenu.showMsg("Menu",function(){Game.showStartMenu();});
+    msgResume.showMsg("Resume",function(){});
+
 };

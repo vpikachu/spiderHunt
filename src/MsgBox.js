@@ -1,19 +1,23 @@
 /**
  * Created by pikachu on 28.09.2015.
  */
-var MsgBox = new PIXI.Container();
-MsgBox.init1 = function() {
+function MsgBox(){
+    PIXI.Container.apply(this, arguments);
+    this.init1();
+}
+MsgBox.prototype = Object.create(PIXI.Container.prototype);
+MsgBox.prototype.init1 = function() {
     var  msg  = new PIXI.Sprite( Game.resources.msgbox.texture);
     msg.anchor.set(0.5,0.5);
     msg.position.set(Game.gameArea.width/2,Game.gameArea.height/2);
     msg.buttonMode = true;
     msg.interactive = true;
-    msg.tap = MsgBox.hideMsg;
-    msg.click = MsgBox.hideMsg;
-    MsgBox.addChild(msg);
+    msg.tap = this.hideMsg;
+    msg.click = this.hideMsg;
+    this.addChild(msg);
 
-    MsgBox.isShow = false;
-    MsgBox.text = new PIXI.Text("text",{
+    this.isShow = false;
+    this.text = new PIXI.Text("text",{
         font : '25px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',
@@ -21,24 +25,28 @@ MsgBox.init1 = function() {
         padding:20,align:"center"
     });
 
-    MsgBox.text.anchor.set(0.5,0.5);
-    MsgBox.text.position.set(msg.position.x,msg.position.y);
+    this.text.anchor.set(0.5,0.5);
+    this.text.position.set(msg.position.x,msg.position.y);
 
-    MsgBox.addChild(MsgBox.text);
+    this.addChild(this.text);
 
-    MsgBox.callonrelease = null;
+    this.callonrelease = null;
+    this.separateBoxes = [];
+};
+MsgBox.prototype.showMsg = function(text,callonrelease){
+    this.text.text = text;
+    this.callonrelease = callonrelease;
+    PlayGround.isMessageShowing = true;
+    Game.stage.addChild(this);
 };
 
-
-
-MsgBox.showMsg = function(text,callonrelease){
-    MsgBox.text.text = text;
-    MsgBox.callonrelease = callonrelease;
-    MsgBox.isShow = true;
-    Game.stage.addChild(MsgBox);
-};
-MsgBox.hideMsg = function(){
-    MsgBox.isShow = false;
-    Game.stage.removeChild(MsgBox);
-    MsgBox.callonrelease.apply();
+MsgBox.prototype.hideMsg = function(){
+    PlayGround.isMessageShowing = false;
+    var mb = this.parent;
+    for(var i=0;i<mb.separateBoxes.length; i++){
+        Game.stage.removeChild(mb.separateBoxes[i]);
+    }
+    Array.clear(mb.separateBoxes);
+    Game.stage.removeChild(mb);
+    this.parent.callonrelease.apply();
 };
