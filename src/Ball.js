@@ -42,6 +42,7 @@ Ball.prototype.draw = function (){
 
 Ball.prototype.destroy = function (){
     PlayGround.removeChild(this.graphics);
+    this.graphics = this.direction = this.position = this.Radius = this.STEP = null;
 };
 
 Ball.prototype.randomizeDirection = function() {

@@ -27,6 +27,7 @@ Bonus.prototype.doBonus = function (){
 };
 Bonus.prototype.destroy = function (){
     PlayGround.removeChild(this.graphics);
+
 };
 //////////////////////////////////////
 function BonusFaster(){

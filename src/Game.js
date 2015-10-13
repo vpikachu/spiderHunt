@@ -5,6 +5,8 @@ var Game = {
     stage:null,
     screen: {width:450, height:800},
     gameArea: {width:450, height:800},
+    devicePixelRatio:1,
+    scaleFactor: 1,
     lives:3,
     level:1,
     score:0,
@@ -13,6 +15,7 @@ var Game = {
     now: Date.now(),
     resources:null,
     setup:function(){
+        this.devicePixelRatio = window.devicePixelRatio;
         this.stage = new PIXI.Container();
 		if(this.detectmob()){
 			this.screen.width = window.innerWidth;
@@ -63,22 +66,29 @@ var Game = {
         loader.add("bottle5","img/bottle/bottle0005.png");
         loader.add("bottle6","img/bottle/bottle0006.png");
         loader.add("particle","img/particle.png");
+        loader.add("backbutton","img/backbutton.png");
         loader.load(function(loader,resouces){
                 Game.resources = resouces;
 
-
+                Game.scaleFactor = Game.screen.width / resouces.gameboard.texture.width;
                 Game.gameArea.height = Game.screen.height-
-                    Math.round( resouces.gameboard.texture.height* Game.screen.width / resouces.gameboard.texture.width);
+                    Math.round( resouces.gameboard.texture.height* Game.scaleFactor);
                 Game.gameArea.width = Game.screen.width;
 
 
                 PlayGround.init1();
                 MainMenu.init1();
-                MsgBox.init1();
 
                 Game.showStartMenu();
 
                 InputTracking.setup();
+
+               /* history.pushState({foo: 'bar'}, 'spiderhunt', window.location.href);
+                Cocoon.App.exitCallback(function(){
+                    Game.showStartMenu();
+                });*/
+
+                //document.addEventListener("backbutton", function () {alert("jhgjhgjhg"); Game.showStartMenu()});
 
 
             });

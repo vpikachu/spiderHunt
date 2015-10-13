@@ -45,8 +45,12 @@ MsgBox.prototype.hideMsg = function(){
     var mb = this.parent;
     for(var i=0;i<mb.separateBoxes.length; i++){
         Game.stage.removeChild(mb.separateBoxes[i]);
+        mb.separateBoxes[i].callonrelease = null;
+        mb.separateBoxes[i] = null;
     }
-    Array.clear(mb.separateBoxes);
     Game.stage.removeChild(mb);
-    this.parent.callonrelease.apply();
+    mb.callonrelease.apply();
+    mb.callonrelease = null;
+    mb = null;
+
 };
