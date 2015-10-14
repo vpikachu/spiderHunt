@@ -109,7 +109,7 @@ var GamePoligon = {points:[],
 
         this.mask.clear();
         this.graphics.clear();
-        this.graphics.lineStyle(2, 0xFFFFFF, 1);
+        this.graphics.lineStyle(3, 0xFFFFFF, 1);
         this.mask.lineStyle(0, 0x000000, 1);
         this.mask.beginFill(0x000000, 1);
         this.graphics.moveTo(this.points[0].x, this.points[0].y);

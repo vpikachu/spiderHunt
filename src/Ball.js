@@ -12,8 +12,8 @@ function Ball(Radius){
 }
 
 Ball.prototype.init = function (){
-    this.position = {x: Math.customRandom(this.Radius+20, Game.gameArea.width - this.Radius-20),
-        y: Math.customRandom(this.Radius+20, Game.gameArea.height - this.Radius-20)};
+    this.position = {x: Math.customRandom(this.Radius+30, Game.gameArea.width - this.Radius-30),
+        y: Math.customRandom(this.Radius+30, Game.gameArea.height - this.Radius-30)};
 
     this.COLLISION_GP = 1;
     this.COLLISION_PLAYER = 2;

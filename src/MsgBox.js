@@ -31,7 +31,6 @@ MsgBox.prototype.init1 = function() {
     this.addChild(this.text);
 
     this.callonrelease = null;
-    this.separateBoxes = [];
 };
 MsgBox.prototype.showMsg = function(text,callonrelease){
     this.text.text = text;
@@ -43,14 +42,13 @@ MsgBox.prototype.showMsg = function(text,callonrelease){
 MsgBox.prototype.hideMsg = function(){
     PlayGround.isMessageShowing = false;
     var mb = this.parent;
-    for(var i=0;i<mb.separateBoxes.length; i++){
-        Game.stage.removeChild(mb.separateBoxes[i]);
-        mb.separateBoxes[i].callonrelease = null;
-        mb.separateBoxes[i] = null;
-    }
     Game.stage.removeChild(mb);
-    mb.callonrelease.apply();
-    mb.callonrelease = null;
+    if(mb.callonrelease != null )
+    {
+        mb.callonrelease.apply();
+        mb.callonrelease = null;
+    }
     mb = null;
+
 
 };

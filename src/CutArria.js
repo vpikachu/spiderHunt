@@ -15,13 +15,13 @@ var CutArria = {
         Array.clear(this.points);
         this.startEdgeId = startPoint.edgeId;
         this.points.push({x: startPoint.x, y: startPoint.y});
-        this.graphics.lineStyle(2, 0xFFFFFF,1);
+        this.graphics.lineStyle(3, 0xFFFFFF,1);
         this.graphics.moveTo(this.points[0].x, this.points[0].y);
         this.graphics.currentPath.shape.closed = false;
 
     },
     drawPath:function () {
-        this.graphics.lineStyle(2, 0xFFFFFF,1);
+        this.graphics.lineStyle(3, 0xFFFFFF,1);
         this.graphics.lineTo(Player.graphics.x, Player.graphics.y);
     }
 };

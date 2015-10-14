@@ -13,7 +13,7 @@ MainMenu.init1 = function(){
     MainMenu.btnPlay.tap = MainMenu.onStart;
     MainMenu.btnPlay.click = MainMenu.onStart;
     MainMenu.btnPlay.anchor.set(0.5,0.5);
-    MainMenu.btnPlay.position.set(Game.screen.width/2, Game.screen.height/2 - MainMenu.btnPlay.height/2);
+    MainMenu.btnPlay.position.set(Game.designResolution.width/2, Game.designResolution.height/2 - MainMenu.btnPlay.height/2);
     MainMenu.addChild(MainMenu.btnPlay);
 
     var sprite =   new PIXI.Text("Play",{
@@ -37,7 +37,7 @@ MainMenu.init1 = function(){
     MainMenu.btnRules.tap = MainMenu.onRules;
     MainMenu.btnRules.click = MainMenu.onRules;
     MainMenu.btnRules.anchor.set(0.5,0.5);
-    MainMenu.btnRules.position.set(Game.screen.width/2, Game.screen.height/2 + MainMenu.btnRules.height/2);
+    MainMenu.btnRules.position.set(Game.designResolution.width/2, Game.designResolution.height/2 + MainMenu.btnRules.height/2);
     MainMenu.btnRules.scale.x = -1;
     MainMenu.addChild(MainMenu.btnRules);
 
@@ -61,7 +61,7 @@ MainMenu.init1 = function(){
     });
 
     MainMenu.bestScore.anchor.set(0.5,0.5);
-    MainMenu.bestScore.position.set(Game.screen.width/2,MainMenu.btnPlay.y - MainMenu.btnPlay.height);
+    MainMenu.bestScore.position.set(Game.designResolution.width/2,MainMenu.btnPlay.y - MainMenu.btnPlay.height);
     MainMenu.addChild(MainMenu.bestScore);
 
 
@@ -70,7 +70,7 @@ MainMenu.doFlow = function(){
 
 };
 MainMenu.onStart = function(){
-    InputTracking.setup();
+    //InputTracking.setup();
     Game.lives = 3;
     Game.score = 0;
 
@@ -80,7 +80,7 @@ MainMenu.onStart = function(){
 };
 MainMenu.onRules = function(){
 
-    InputTracking.setup();
+    //InputTracking.setup();
     Game.lives = 100;
     Game.score = 0;
 

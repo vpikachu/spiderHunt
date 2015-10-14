@@ -3,7 +3,7 @@
  */
 
 function Bonus(){
-    this.Radius = 5;
+    this.Radius = 10;
     this.graphics= null;
 
     this.init();
@@ -44,11 +44,9 @@ BonusFaster.prototype.init = function (){
     this.graphics = new PIXI.extras.MovieClip(frames);
     this.graphics.x = Math.customRandom(50, Game.gameArea.width - 50);
     this.graphics.y = Math.customRandom(50, Game.gameArea.height - 50);
-    this.Radius = 15
+    this.Radius = 17;
 };
 BonusFaster.prototype.draw = function (){
-    this.graphics.height = this.Radius *2;
-    this.graphics.width = this.Radius *2;
     this.graphics.animationSpeed = 0.5;
     this.graphics.anchor.set(0.5,0.5);
     this.graphics.play();
@@ -63,14 +61,12 @@ function BonusGold(){
 }
 BonusGold.prototype = Object.create(Bonus.prototype);
 BonusGold.prototype.init = function (){
-    this.Radius = 10;
+    this.Radius = 13;
     this.graphics = new PIXI.Sprite(Game.assets.gold.texture);
-    this.graphics.x = Math.customRandom(30, Game.gameArea.width - 30);
-    this.graphics.y = Math.customRandom(30, Game.gameArea.height - 30);
+    this.graphics.x = Math.customRandom(50, Game.gameArea.width - 50);
+    this.graphics.y = Math.customRandom(50, Game.gameArea.height - 50);
 };
 BonusGold.prototype.draw = function (){
-    this.graphics.height = this.Radius *2;
-    this.graphics.width = this.Radius *2;
     this.graphics.anchor.set(0.5,0.5);
 };
 BonusGold.prototype.doBonus = function() {

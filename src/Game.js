@@ -14,7 +14,7 @@ var Game = {
     bestScore:0,
     elapsed:Date.now(),
     now: Date.now(),
-    resources:null,
+    assets:null,
     setup:function(){
         //scaling game to device resolution;
         this.devicePixelRatio = window.devicePixelRatio;
@@ -34,7 +34,7 @@ var Game = {
         //loading screen
         var loading = PIXI.Sprite.fromImage("img/loading.png");
         loading.anchor.set(0.5,0.5);
-        loading.position.set(this.screen.width/2, this.screen.height/2);
+        loading.position.set(this.designResolution.width/2, this.designResolution.height/2);
         this.stage = new PIXI.Container();
         this.stage.scale.set(this.scaleFactor);
         this.stage.addChild(loading);
@@ -75,30 +75,43 @@ var Game = {
         loader.add("particle","img/particle.png");
         loader.add("backbutton","img/backbutton.png");
         loader.load(function(loader,resouces){
-                Game.assets = resouces;
+            Game.assets = resouces;
+            resouces = null;
 
-                Game.scaleFactor = Game.screen.width / resouces.gameboard.texture.width;
-                Game.gameArea.height = Game.screen.height-
-                    Math.round( resouces.gameboard.texture.height* Game.scaleFactor);
-                Game.gameArea.width = Game.screen.width;
-
-
-                PlayGround.init1();
-                MainMenu.init1();
-
-                Game.showStartMenu();
-
-                InputTracking.setup();
-
-               /* history.pushState({foo: 'bar'}, 'spiderhunt', window.location.href);
-                Cocoon.App.exitCallback(function(){
-                    Game.showStartMenu();
-                });*/
-
-                //document.addEventListener("backbutton", function () {alert("jhgjhgjhg"); Game.showStartMenu()});
+            Game.gameArea.height = Game.designResolution.height-
+                Game.assets.gameboard.texture.height;
+            Game.gameArea.width = Game.designResolution.width;
 
 
-            });
+            PlayGround.init1();
+            MainMenu.init1();
+
+            window.addEventListener("resize",Game.ongameresize);
+            Game.rescaleScenes();
+
+            Game.showStartMenu();
+
+            InputTracking.setup();
+
+
+
+
+        });
+    },
+    ongameresize: function() {
+        Game.scaleFactor = Math.min(window.innerWidth/Game.designResolution.width,
+            window.innerHeight/Game.designResolution.height);
+
+        Game.screen.width = Game.scaleFactor * Game.designResolution.width;
+        Game.screen.height = Game.scaleFactor * Game.designResolution.height;
+
+        renderer.resize(Game.screen.width,Game.screen.height);
+
+        Game.rescaleScenes();
+    },
+    rescaleScenes:function(){
+        MainMenu.scale.set(Game.scaleFactor,Game.scaleFactor);
+        PlayGround.scale.set(Game.scaleFactor,Game.scaleFactor);
     },
 	detectmob: function detectmob() { 
 		 if( navigator.userAgent.match(/Android/i)

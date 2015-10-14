@@ -4,7 +4,7 @@
 
 Game.setup();
 
-var renderer = PIXI.autoDetectRenderer(Game.screen.width, Game.screen.height,{backgroundColor : 0x000000/*0xB0D8FF*/});
+var renderer = PIXI.autoDetectRenderer(Game.screen.width, Game.screen.height,{backgroundColor : 0x000000/*0xB0D8FF*/,antialias:true});
 document.body.appendChild(renderer.view);
 
 

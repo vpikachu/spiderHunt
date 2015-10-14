@@ -12,13 +12,13 @@ PlayGround.init1 = function(){
     //
 
     var web = new PIXI.Sprite(Game.assets.web.texture);
-    web.width = Game.screen.width;
-    web.height = Game.gameArea.height +30;
+    //web.width = Game.screen.width;
+    //web.height = Game.gameArea.height +30;
     PlayGround.addChild(web);
 
     var background = new PIXI.Sprite(Game.assets.background.texture);
-    background.width = web.width;
-    background.height = web.height;
+    //background.width = web.width;
+    //background.height = web.height;
     PlayGround.addChild(background);
 
     PlayGround.addChild(GamePoligon.graphics);
@@ -89,10 +89,6 @@ PlayGround.createLevel = function(level){
     Array.clear(PlayGround.trash);
 
     if(Math.isNumeric(Game.level)) {
-        for (i = 1; i <= Game.level + 1; i++) {
-            PlayGround.balls.push(new Ball(5));
-        }
-
         // add BonusFaster
         if (Player.STEP <= 2 && Math.random() < 0.5) {
             PlayGround.bonuses.push(new BonusFaster());
@@ -103,6 +99,10 @@ PlayGround.createLevel = function(level){
             if (Math.random() > 0.5) {
                 PlayGround.bonuses.push(new BonusGold());
             }
+        }
+        //add enemyes
+        for (i = 1; i <= Game.level + 1; i++) {
+            PlayGround.balls.push(new Ball());
         }
     }
     else {
@@ -138,13 +138,13 @@ PlayGround.rules = [
             PlayGround.addChild(Text);
 
 
-            var ball = new Ball(5);
+            var ball = new Ball();
             ball.doMove = function(){this.updateGraphicsPos();};
             ball.position.x = 100;
             ball.position.y = 100;
             PlayGround.balls.push(ball);
 
-            ball = new Ball(5);
+            ball = new Ball();
             ball.graphics.position.set(Game.gameArea.width-100,Game.gameArea.height-100);
             PlayGround.balls.push(ball);
 
@@ -177,10 +177,10 @@ PlayGround.rules = [
 
 
 
-            PlayGround.balls.push(new Ball(5));
+            PlayGround.balls.push(new Ball());
 
 
-            PlayGround.balls.push(new Ball(5));
+            PlayGround.balls.push(new Ball());
 
             var bonuse = new BonusFaster();
             bonuse.graphics.position.set(100,100);
