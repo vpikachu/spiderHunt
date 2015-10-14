@@ -4,8 +4,8 @@
 var GameBoard = new PIXI.Container();
 GameBoard.init1 = function(){
 
-    var bg = new PIXI.Sprite(Game.resources.gameboard.texture);
-    var sf = Game.screen.width/Game.resources.gameboard.texture.width;
+    var bg = new PIXI.Sprite(Game.assets.gameboard.texture);
+    var sf = Game.screen.width/Game.assets.gameboard.texture.width;
     bg.scale.set(sf,sf);
     bg.anchor.set(0,1);
     bg.position.set(0,Game.screen.height);
@@ -13,7 +13,7 @@ GameBoard.init1 = function(){
     GameBoard.addChild(bg);
 
 
-    var back  = new PIXI.Sprite( Game.resources.backbutton.texture);
+    var back  = new PIXI.Sprite( Game.assets.backbutton.texture);
     back.anchor.set(0,1);
     back.scale.set(sf,sf);
     back.position.set(5,Game.screen.height-7);
@@ -32,7 +32,7 @@ GameBoard.init1 = function(){
         }
     );
     GameBoard.state.anchor.set(0,1);
-    var spider = new PIXI.Sprite(Game.resources.spyder1.texture);
+    var spider = new PIXI.Sprite(Game.assets.spyder1.texture);
 
     spider.position.set(15+back.position.x+back.width,Game.screen.height-10);
     spider.anchor.set(0,1);

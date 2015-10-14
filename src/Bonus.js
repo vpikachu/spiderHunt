@@ -35,12 +35,12 @@ function BonusFaster(){
 }
 BonusFaster.prototype = Object.create(Bonus.prototype);
 BonusFaster.prototype.init = function (){
-    var frames = [Game.resources.bottle1.texture,
-        Game.resources.bottle2.texture,
-        Game.resources.bottle3.texture,
-        Game.resources.bottle4.texture,
-        Game.resources.bottle5.texture,
-        Game.resources.bottle6.texture];
+    var frames = [Game.assets.bottle1.texture,
+        Game.assets.bottle2.texture,
+        Game.assets.bottle3.texture,
+        Game.assets.bottle4.texture,
+        Game.assets.bottle5.texture,
+        Game.assets.bottle6.texture];
     this.graphics = new PIXI.extras.MovieClip(frames);
     this.graphics.x = Math.customRandom(50, Game.gameArea.width - 50);
     this.graphics.y = Math.customRandom(50, Game.gameArea.height - 50);
@@ -64,7 +64,7 @@ function BonusGold(){
 BonusGold.prototype = Object.create(Bonus.prototype);
 BonusGold.prototype.init = function (){
     this.Radius = 10;
-    this.graphics = new PIXI.Sprite(Game.resources.gold.texture);
+    this.graphics = new PIXI.Sprite(Game.assets.gold.texture);
     this.graphics.x = Math.customRandom(30, Game.gameArea.width - 30);
     this.graphics.y = Math.customRandom(30, Game.gameArea.height - 30);
 };

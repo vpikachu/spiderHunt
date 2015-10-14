@@ -61,7 +61,7 @@ var Player = {
             pc,
 
             // The collection of particle images to use
-            [Game.resources.particle.texture],
+            [Game.assets.particle.texture],
             {
                     "alpha": {
                     "start": 0.5,
@@ -118,14 +118,14 @@ var Player = {
         /*
         create movie clip with spyder
          */
-        var frames = [Game.resources.spyder1.texture,
-            Game.resources.spyder2.texture,
-            Game.resources.spyder3.texture,
-            Game.resources.spyder4.texture,
-            Game.resources.spyder5.texture,
-            Game.resources.spyder6.texture,
-            Game.resources.spyder7.texture,
-            Game.resources.spyder8.texture
+        var frames = [Game.assets.spyder1.texture,
+            Game.assets.spyder2.texture,
+            Game.assets.spyder3.texture,
+            Game.assets.spyder4.texture,
+            Game.assets.spyder5.texture,
+            Game.assets.spyder6.texture,
+            Game.assets.spyder7.texture,
+            Game.assets.spyder8.texture
             ];
         this.graphics.movieClip = new PIXI.extras.MovieClip(frames);
         this.graphics.movieClip.anchor.x = 0.5;

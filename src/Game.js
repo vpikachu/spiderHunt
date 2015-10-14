@@ -3,8 +3,9 @@
  */
 var Game = {
     stage:null,
-    screen: {width:450, height:800},
-    gameArea: {width:450, height:800},
+    screen: {width:540, height:960},
+    designResolution: {width:540, height:960},
+    gameArea: {width:540, height:960},
     devicePixelRatio:1,
     scaleFactor: 1,
     lives:3,
@@ -15,12 +16,17 @@ var Game = {
     now: Date.now(),
     resources:null,
     setup:function(){
+        //scaling game to device resolution;
         this.devicePixelRatio = window.devicePixelRatio;
-        this.stage = new PIXI.Container();
-		if(this.detectmob()){
+        this.scaleFactor = Math.min(window.innerWidth/this.designResolution.width,
+            window.innerHeight/this.designResolution.height);
+        this.screen.width = this.scaleFactor * this.designResolution.width;
+        this.screen.height = this.scaleFactor * this.designResolution.height;
+
+		/*if(this.detectmob()){
 			this.screen.width = window.innerWidth;
 			this.screen.height = window.innerHeight;
-		}
+		}*/
         if(window.localStorage.getItem("$BEST_SCORE$") == null)     window.localStorage.setItem("$BEST_SCORE$",0);
         this.bestScore = window.localStorage["$BEST_SCORE$"];
 
@@ -29,7 +35,8 @@ var Game = {
         var loading = PIXI.Sprite.fromImage("img/loading.png");
         loading.anchor.set(0.5,0.5);
         loading.position.set(this.screen.width/2, this.screen.height/2);
-
+        this.stage = new PIXI.Container();
+        this.stage.scale.set(this.scaleFactor);
         this.stage.addChild(loading);
         this.stage.doFlow= function(){};
 
@@ -68,7 +75,7 @@ var Game = {
         loader.add("particle","img/particle.png");
         loader.add("backbutton","img/backbutton.png");
         loader.load(function(loader,resouces){
-                Game.resources = resouces;
+                Game.assets = resouces;
 
                 Game.scaleFactor = Game.screen.width / resouces.gameboard.texture.width;
                 Game.gameArea.height = Game.screen.height-

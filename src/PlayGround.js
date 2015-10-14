@@ -11,12 +11,12 @@ PlayGround.isMessageShowing = false;
 PlayGround.init1 = function(){
     //
 
-    var web = new PIXI.Sprite(Game.resources.web.texture);
+    var web = new PIXI.Sprite(Game.assets.web.texture);
     web.width = Game.screen.width;
     web.height = Game.gameArea.height +30;
     PlayGround.addChild(web);
 
-    var background = new PIXI.Sprite(Game.resources.background.texture);
+    var background = new PIXI.Sprite(Game.assets.background.texture);
     background.width = web.width;
     background.height = web.height;
     PlayGround.addChild(background);

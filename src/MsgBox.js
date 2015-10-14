@@ -7,7 +7,7 @@ function MsgBox(){
 }
 MsgBox.prototype = Object.create(PIXI.Container.prototype);
 MsgBox.prototype.init1 = function() {
-    var  msg  = new PIXI.Sprite( Game.resources.msgbox.texture);
+    var  msg  = new PIXI.Sprite( Game.assets.msgbox.texture);
     msg.anchor.set(0.5,0.5);
     msg.position.set(Game.gameArea.width/2,Game.gameArea.height/2);
     msg.buttonMode = true;

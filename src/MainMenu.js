@@ -7,7 +7,7 @@ MainMenu.btnRules = null;
 MainMenu.init1 = function(){
 
 
-    MainMenu.btnPlay = new PIXI.Sprite( Game.resources.msgbox.texture);
+    MainMenu.btnPlay = new PIXI.Sprite( Game.assets.msgbox.texture);
     MainMenu.btnPlay.buttonMode = true;
     MainMenu.btnPlay.interactive = true;
     MainMenu.btnPlay.tap = MainMenu.onStart;
@@ -30,7 +30,7 @@ MainMenu.init1 = function(){
 
 
 
-    MainMenu.btnRules = new PIXI.Sprite( Game.resources.msgbox.texture);
+    MainMenu.btnRules = new PIXI.Sprite( Game.assets.msgbox.texture);
 
     MainMenu.btnRules.interactive = true;
     MainMenu.btnRules.buttonMode = true;

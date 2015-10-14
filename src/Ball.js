@@ -28,10 +28,10 @@ Ball.prototype.draw = function (){
     var type = Math.customRandom(0,2);
 
 
-    var frames = [Game.resources[types[type]+"1"].texture,
-        Game.resources[types[type]+"2"].texture,
-        Game.resources[types[type]+"3"].texture,
-        Game.resources[types[type]+"4"].texture];
+    var frames = [Game.assets[types[type]+"1"].texture,
+        Game.assets[types[type]+"2"].texture,
+        Game.assets[types[type]+"3"].texture,
+        Game.assets[types[type]+"4"].texture];
     this.graphics = new PIXI.extras.MovieClip(frames);
     this.graphics.anchor.x = 0.5;
     this.graphics.anchor.y = 0.5;
