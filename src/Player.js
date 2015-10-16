@@ -9,26 +9,31 @@ var Player = {
     COLLISION_PATH : 3,
     Radius:10,
     playMovie:function () {
-
-        if(this.direction.x==-1)
-            this.graphics.emitter.maxStartRotation = 0;
-        else if(this.direction.x==1)
-            this.graphics.emitter.maxStartRotation = 180;
-        else if(this.direction.y==1)
-            this.graphics.emitter.maxStartRotation = 270;
-        else if(this.direction.y==-1)
-            this.graphics.emitter.maxStartRotation = 90;
-
-        this.graphics.emitter.minStartRotation = this.graphics.emitter.maxStartRotation;
-
-
-
         if(!this.isPlaying()) {
             this.graphics.movieClip.play();
             this.graphics.emitter.emit =  this.STEP != 2;
+
+            if(actx != undefined) {
+
+                if(this.graphics.emitter.emit){
+                    sounds["sound/blow.mp3"].play();
+                }
+            }
         }
+    },
+    updateEmitter: function(){
+        if(this.isPlaying()) {
+            if (this.direction.x == -1)
+                this.graphics.emitter.maxStartRotation = 0;
+            else if (this.direction.x == 1)
+                this.graphics.emitter.maxStartRotation = 180;
+            else if (this.direction.y == 1)
+                this.graphics.emitter.maxStartRotation = 270;
+            else if (this.direction.y == -1)
+                this.graphics.emitter.maxStartRotation = 90;
 
-
+            this.graphics.emitter.minStartRotation = this.graphics.emitter.maxStartRotation;
+        }
     },
     stopMovie: function() {
         if(this.isPlaying()) {
@@ -116,7 +121,7 @@ var Player = {
         PlayGround.addChild(pc);
         this.graphics.emitter.emit = false;
         /*
-        create movie clip with spyder
+        create movie clip with spider
          */
         var frames = [Game.assets.spyder1.texture,
             Game.assets.spyder2.texture,
@@ -158,14 +163,18 @@ var Player = {
     doMove:function(){
         if(Game.checkIsWIN())
         {
+            if(actx != undefined) {
+                sounds["sound/next_level.mp3"].play();
+            }
             this.stopMovie();
             var msg = new MsgBox();
-            msg.showMsg("You win! Next Level!",PlayGround.nextLevel);
+            msg.showMsg("Next Level!",PlayGround.nextLevel);
             Game.score +=100;
             return;
         }
         this.graphics.emitter.update((Game.now - Game.elapsed) * 0.001);
 
+        var prevDirection = {x:Player.direction.x, y: Player.direction.y};
 
         if((InputTracking.direction.y == -1 && this.graphics.y > 0) || /*"ArrowUp"*/
 
@@ -228,6 +237,10 @@ var Player = {
                     this.isCutting = false;
                     InputTracking.stop();
                     this.stopMovie();
+
+                    if(actx != undefined) {
+                        sounds["sound/end_of_net.mp3"].play();
+                    }
                 }
             }
             else
@@ -236,11 +249,14 @@ var Player = {
                 {
                     Game.lives--;
                     Game.pressedKey = -1;
+                    if(actx != undefined) {
+                        sounds["sound/lost_life.mp3"].play();
+                    }
                     if(Game.lives < 1) {
                         Game.setBestScore();
                         this.stopMovie();
                         var msg = new MsgBox();
-                        msg.showMsg("GameOver",  Game.showStartMenu);
+                        msg.showMsg("Game Over",  Game.showStartMenu);
                     }
                     else  {
                         GameBoard.updateState();
@@ -258,10 +274,10 @@ var Player = {
             }
         }
 
-        this.playMovie();
+        if(prevDirection.x == 0 && prevDirection.y == 0) this.playMovie();
+        this.updateEmitter();
 
         this.checkBonusCrossing();
-
 
 
         if(point.y < 0) point.y = 0;

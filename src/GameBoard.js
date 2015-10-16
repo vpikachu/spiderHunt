@@ -65,13 +65,29 @@ GameBoard.init1 = function(){
 };
 GameBoard.hideMenu = function (){
     PlayGround.isMessageShowing = false;
+
+    if(actx != undefined) {
+        sounds["sound/click.mp3"].play();
+    }
+
     Game.stage.removeChild(GameBoard.menu);
 };
 GameBoard.goMainMenu = function () {
+
+    if(actx != undefined) {
+        sounds["sound/click.mp3"].play();
+    }
+
     GameBoard.hideMenu();
     Game.showStartMenu();
 };
 GameBoard.showMenu = function () {
+    if(PlayGround.isMessageShowing) return;
+
+    if(actx != undefined) {
+        sounds["sound/click.mp3"].play();
+    }
+
     PlayGround.isMessageShowing = true;
     Game.stage.addChild(GameBoard.menu);
 };

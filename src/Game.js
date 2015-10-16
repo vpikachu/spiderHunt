@@ -40,6 +40,8 @@ var Game = {
         this.stage.addChild(loading);
         this.stage.doFlow= function(){};
 
+        window.addEventListener("resize",Game.ongameresize);
+
         var loader = new PIXI.loaders.Loader();
         loader.add("background","img/background.png");
         loader.add("msgbox","img/msgbox.png");
@@ -74,29 +76,50 @@ var Game = {
         loader.add("bottle6","img/bottle/bottle0006.png");
         loader.add("particle","img/particle.png");
         loader.add("backbutton","img/backbutton.png");
-        loader.load(function(loader,resouces){
-            Game.assets = resouces;
-            resouces = null;
+        loader.add("logo","img/logo.png");
+        loader.add("hunter1","img/hunter/hunter0001.png");
+        loader.add("hunter2","img/hunter/hunter0002.png");
+        loader.add("hunter3","img/hunter/hunter0003.png");
+        loader.add("hunter4","img/hunter/hunter0004.png");
+        loader.add("hunter5","img/hunter/hunter0005.png");
+        loader.add("hunter6","img/hunter/hunter0006.png");
+        loader.load(Game.ontexturesload);
+    },
+    ontexturesload: function(loader,resouces){
+        Game.assets = resouces;
+        resouces = null;
 
-            Game.gameArea.height = Game.designResolution.height-
-                Game.assets.gameboard.texture.height;
-            Game.gameArea.width = Game.designResolution.width;
-
-
-            PlayGround.init1();
-            MainMenu.init1();
-
-            window.addEventListener("resize",Game.ongameresize);
-            Game.rescaleScenes();
-
-            Game.showStartMenu();
-
-            InputTracking.setup();
+        Game.gameArea.height = Game.designResolution.height-
+            Game.assets.gameboard.texture.height;
+        Game.gameArea.width = Game.designResolution.width;
 
 
+        PlayGround.init1();
+        MainMenu.init1();
+        Game.rescaleScenes();
+
+        if(actx != undefined){
+
+        sounds.whenLoaded = Game.onsoundsload;
+        sounds.load([
+            "sound/coin.mp3",
+            "sound/drink.mp3",
+            "sound/click.mp3",
+            "sound/blow.mp3",
+            "sound/end_of_net.mp3",
+            "sound/next_level.mp3",
+            "sound/lost_life.mp3"
+
+        ]);
+        } else Game.onsoundsload();
 
 
-        });
+
+    },
+    onsoundsload: function(){
+        sounds["sound/blow.mp3"].volume = 0.5;
+        Game.showStartMenu();
+        InputTracking.setup();
     },
     ongameresize: function() {
         Game.scaleFactor = Math.min(window.innerWidth/Game.designResolution.width,

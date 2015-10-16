@@ -18,7 +18,7 @@ MsgBox.prototype.init1 = function() {
 
     this.isShow = false;
     this.text = new PIXI.Text("text",{
-        font : '25px HennyPenny',
+        font : '30px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',
         strokeThickness : 4,
@@ -40,6 +40,9 @@ MsgBox.prototype.showMsg = function(text,callonrelease){
 };
 
 MsgBox.prototype.hideMsg = function(){
+    if(actx != undefined) {
+        sounds["sound/click.mp3"].play();
+    }
     PlayGround.isMessageShowing = false;
     var mb = this.parent;
     Game.stage.removeChild(mb);

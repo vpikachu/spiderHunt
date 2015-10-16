@@ -69,6 +69,9 @@ Ball.prototype.doMove = function() {
         //loos life
 
         Game.lives--;
+        if(actx != undefined) {
+            sounds["sound/lost_life.mp3"].play();
+        }
         Game.pressedKey = -1;
         if(Game.lives < 1) {
             var msg = new MsgBox();

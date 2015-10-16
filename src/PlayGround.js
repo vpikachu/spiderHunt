@@ -117,9 +117,10 @@ PlayGround.rules = [
         name:"rule 1",
         postMessage:"Next training!",
         init: function(){
-            var Text = new PIXI.Text("use arrow keys / mouse swipes / touch swipes to move spider and surround bug by web",
+            var isTouchDevice = 'ontouchstart' in document.documentElement;
+            var Text = new PIXI.Text("Use " + (isTouchDevice?"touch swipes":"arrow keys or mouse swipes")+"  to move spider and surround bug by web",
                 {
-                    font : '20px HennyPenny',
+                    font : '30px HennyPenny',
                     fill : '#000000',
                     align:"center",
                     wordWrap:true,
@@ -155,9 +156,9 @@ PlayGround.rules = [
         name:"rule 2",
         postMessage:"You have completed training.",
         init: function(){
-            var Text = new PIXI.Text("Collect bonuses: \nElixir(make spider faster),\n Coin (up your score)",
+            var Text = new PIXI.Text("Collect bonuses: \nElixir makes spider faster,\n Coins up your score",
                 {
-                    font : '20px HennyPenny',
+                    font : '30px HennyPenny',
                     fill : '#000000',
                     align:"center",
                     wordWrap:true,

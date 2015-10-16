@@ -54,6 +54,9 @@ BonusFaster.prototype.draw = function (){
 BonusFaster.prototype.doBonus = function() {
     Player.graphics.emitter.emit = true;
     Player.STEP += 2;
+    if(actx != undefined) {
+        sounds["sound/drink.mp3"].play();
+    }
 };
 ///////////////////////////////////////////////////////
 function BonusGold(){
@@ -71,4 +74,7 @@ BonusGold.prototype.draw = function (){
 };
 BonusGold.prototype.doBonus = function() {
     Game.score +=25;
+    if(actx != undefined) {
+        sounds["sound/coin.mp3"].play();
+    }
 };
