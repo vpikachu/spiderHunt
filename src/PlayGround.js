@@ -118,7 +118,8 @@ PlayGround.rules = [
         postMessage:"Next training!",
         init: function(){
             var isTouchDevice = 'ontouchstart' in document.documentElement;
-            var Text = new PIXI.Text("Use " + (isTouchDevice?"touch swipes":"arrow keys or mouse swipes")+"  to move spider and surround bug by web",
+            var Text = new PIXI.Text("Use " + (isTouchDevice?"touch swipes":"arrow keys or mouse swipes")+"  to move spider and surround bug by web.\n " +
+                "It will move while you hold down "+ (isTouchDevice?"touch":"key or mouse button"),
                 {
                     font : '30px HennyPenny',
                     fill : '#000000',
