@@ -70,7 +70,7 @@ MainMenu.init1 = function(){
     MainMenu.btnRules.scale.x = -1;
     MainMenu.addChild(MainMenu.btnRules);
 
-    sprite =   new PIXI.Text("Rules",{
+    sprite =   new PIXI.Text("Tutorial",{
         font : '35px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',

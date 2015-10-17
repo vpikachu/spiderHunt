@@ -114,7 +114,7 @@ PlayGround.createLevel = function(level){
 };
 PlayGround.rules = [
     {
-        name:"rule 1",
+        name:"tutorial 1",
         postMessage:"Next training!",
         init: function(){
             var isTouchDevice = 'ontouchstart' in document.documentElement;
@@ -153,7 +153,7 @@ PlayGround.rules = [
         },
     },
     {
-        name:"rule 2",
+        name:"tutorial 2",
         postMessage:"You have completed training.",
         init: function(){
             var Text = new PIXI.Text("Collect bonuses: \nElixir makes spider faster,\n Coins up your score",
