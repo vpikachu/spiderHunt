@@ -117,7 +117,9 @@ var Game = {
 
     },
     onsoundsload: function(){
-        sounds["sound/blow.mp3"].volume = 0.5;
+        if(actx != undefined) {
+            sounds["sound/blow.mp3"].volume = 0.5;
+        }
         Game.showStartMenu();
         InputTracking.setup();
     },
