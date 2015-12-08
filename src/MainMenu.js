@@ -49,7 +49,7 @@ MainMenu.init1 = function(){
         font : '35px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',
-        strokeThickness : 4,
+        strokeThickness : 6,
         padding:20
     });
 
@@ -74,7 +74,7 @@ MainMenu.init1 = function(){
         font : '35px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',
-        strokeThickness : 4,
+        strokeThickness : 6,
         padding:20
     });
 
@@ -84,8 +84,8 @@ MainMenu.init1 = function(){
     MainMenu.bestScore =   new PIXI.Text("Best score: ",{
         font : '30px HennyPenny',
         fill : '#FFFFFF',
-        stroke : '#000000',
-        strokeThickness : 4,
+        stroke : '#363636',
+        strokeThickness : 8,
         padding:20
     });
 
