@@ -122,8 +122,10 @@ PlayGround.rules = [
                 "It will move while you hold down "+ (isTouchDevice?"touch":"key or mouse button"),
                 {
                     font : '30px HennyPenny',
-                    fill : '#000000',
+                    fill : '#1B1B1B',
                     align:"center",
+                    stroke : '#515151',
+                    strokeThickness : 2,
                     wordWrap:true,
                     wordWrapWidth:Game.gameArea.width*3/4
                 }
@@ -160,7 +162,10 @@ PlayGround.rules = [
             var Text = new PIXI.Text("Collect bonuses: \nElixir makes spider faster,\n Coins up your score",
                 {
                     font : '30px HennyPenny',
-                    fill : '#000000',
+                    fill : '#1B1B1B',
+                    align:"center",
+                    stroke : '#515151',
+                    strokeThickness : 2,
                     align:"center",
                     wordWrap:true,
                     wordWrapWidth:Game.gameArea.width*3/4
