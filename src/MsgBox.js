@@ -21,7 +21,7 @@ MsgBox.prototype.init1 = function() {
         font : '30px HennyPenny',
         fill : '#FFFFFF',
         stroke : '#557100',
-        strokeThickness : 4,
+        strokeThickness : 6,
         padding:20,align:"center"
     });
 
