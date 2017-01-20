@@ -28,7 +28,9 @@ GameBoard.init1 = function(){
 
     GameBoard.state = new PIXI.Text("text",{
             font: '20px HennyPenny',
-            fill: '#FFFFFF'
+            fill: '#FFFFFF',
+            /*stroke : '#FFFFFF',
+            strokeThickness : 1,*/
             /*wrap:true,
              wrapWidth:600,
              lineHeight:25*/

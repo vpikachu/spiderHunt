@@ -33,59 +33,35 @@ MainMenu.init1 = function(){
     MainMenu.bug.position.x = Game.designResolution.width/2;
     MainMenu.bug.position.y = 300;
 
+	
+	
+    MainMenu.btnPlay = new MsgBox();
+    MainMenu.btnPlay.text.text = "Play";
+    //MainMenu.btnPlay.y += MainMenu.btnPlay.children[0].height/2;
+    MainMenu.btnPlay.children[0].click = MainMenu.onStart
+    MainMenu.btnPlay.children[0].tap = MainMenu.onStart;
+    MainMenu.btnPlay.children[1].style.font = "35px HennyPenny";
 
-
-
-    MainMenu.btnPlay = new PIXI.Sprite( Game.assets.msgbox.texture);
-    MainMenu.btnPlay.buttonMode = true;
-    MainMenu.btnPlay.interactive = true;
-    MainMenu.btnPlay.tap = MainMenu.onStart;
-    MainMenu.btnPlay.click = MainMenu.onStart;
-    MainMenu.btnPlay.anchor.set(0.5,0.5);
-    MainMenu.btnPlay.position.set(Game.designResolution.width/2, Game.designResolution.height/2);
     MainMenu.addChild(MainMenu.btnPlay);
 
-    sprite =   new PIXI.Text("Play",{
-        font : '35px HennyPenny',
-        fill : '#FFFFFF',
-        stroke : '#557100',
-        strokeThickness : 4,
-        padding:20
-    });
 
-    sprite.anchor.set(0.5,0.5);
-    sprite.position.set(MainMenu.btnPlay.position.x, MainMenu.btnPlay.position.y);
-    MainMenu.addChild(sprite);
+	
+	
+	
+	MainMenu.btnRules = new MsgBox();
+    MainMenu.btnRules.text.text = "Tutorial";
+    MainMenu.btnRules.y += MainMenu.btnRules.children[0].height;
+    MainMenu.btnRules.children[0].click = MainMenu.onRules
+    MainMenu.btnRules.children[0].tap = MainMenu.onRules;
+    MainMenu.btnRules.children[1].style.font = "35px HennyPenny";
 
-
-
-    MainMenu.btnRules = new PIXI.Sprite( Game.assets.msgbox.texture);
-
-    MainMenu.btnRules.interactive = true;
-    MainMenu.btnRules.buttonMode = true;
-    MainMenu.btnRules.tap = MainMenu.onRules;
-    MainMenu.btnRules.click = MainMenu.onRules;
-    MainMenu.btnRules.anchor.set(0.5,0.5);
-    MainMenu.btnRules.position.set(Game.designResolution.width/2, Game.designResolution.height/2 + MainMenu.btnRules.height);
-    MainMenu.btnRules.scale.x = -1;
     MainMenu.addChild(MainMenu.btnRules);
-
-    sprite =   new PIXI.Text("Tutorial",{
-        font : '35px HennyPenny',
-        fill : '#FFFFFF',
-        stroke : '#557100',
-        strokeThickness : 4,
-        padding:20
-    });
-
-    sprite.anchor.set(0.5,0.5);
-    sprite.position.set(MainMenu.btnRules.position.x, MainMenu.btnRules.position.y);
-    MainMenu.addChild(sprite);
+    
     MainMenu.bestScore =   new PIXI.Text("Best score: ",{
         font : '30px HennyPenny',
         fill : '#FFFFFF',
-        stroke : '#000000',
-        strokeThickness : 4,
+        stroke : '#363636',
+        strokeThickness : 8,
         padding:20
     });
 
